@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bebu Jaan 💜</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: Arial;
+    background: linear-gradient(to right, #7b2ff7, #f107a3);
+    color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    margin-top: 10vh;
+    padding: 20px;
+    position: relative;   /* IMPORTANT */
+    overflow: hidden;     /* IMPORTANT */
+}
+
+h1 { font-size: 8vw; }
+p { font-size: 5vw; }
+
+/* Slideshow */
+.slideshow {
+    display: none;
+    position: relative;
+    width: 80%;
+    max-width: 320px;
+    margin: 20px auto;
+    animation: slideUp 1s ease;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255,255,255,0.6);
+}
+
+/* Button */
+button {
+    padding: 12px 20px;
+    font-size: 5vw;
+    background: linear-gradient(45deg, #8e2de2, #4a00e0);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#countdown { font-size: 6vw; }
+
+/* Animation */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.heart {
+    position: absolute;   /* fixed se change */
+    color: #d291ff;
+    font-size: 20px;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+/* Glow Effect */
+h1 {
+    font-size: 8vw;
+    text-shadow: 0 0 10px #fff, 0 0 20px #d291ff, 0 0 30px #a855f7;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #fff; }
+    to { text-shadow: 0 0 25px #ff9bff, 0 0 40px #c084fc; }
+}
+
+/* Sparkles */
+.sparkle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: sparkleAnim 2s linear infinite;
+}
+
+@keyframes sparkleAnim {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Fireworks */
+.firework {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+#loveText {
+    font-size: 7vw;
+    margin-top: 20px;
+    color: #fff;
+    text-shadow: 0 0 10px #ff66ff, 0 0 30px #ff99ff;
+    animation: zoomIn 2s ease forwards;
+}
+
+#nameReveal {
+    font-size: 5vw;
+    margin-top: 10px;
+    color: #ffe6ff;
+    opacity: 0;
+    animation: fadeIn 3s ease forwards;
+    animation-delay: 2s;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 🎵 Music -->
+
+<audio id= "music" loop>
+    <source src="nastelbom-happy-birthday-471481.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>Happy Birthday Bebu Jaan 💜</h1>
+    <p>From your Babu 🤍</p>
+
+<p id="countdown"></p>
+
+<button onclick="startSurprise()">Click for Surprise 💜</button>
+
+<!-- 📸 Slideshow (Button ke neeche) -->
+<div class="slideshow" id="slider">
+    <img class="slide" src="B.jpeg">
+    <img class="slide" src="B1.jpeg">
+    <img class="slide" src="B2.jpeg">
+    <img class="slide" src="B3.jpeg">
+    <img class="slide" src="B4.jpeg">
+    <img class="slide" src="B5.jpeg">
+    <img class="slide" src="B6.jpeg">
+    <img class="slide" src="B7.jpeg">
+    <img class="slide" src="B8.jpeg">
+</div>
+
+<p id="hiddenMessage" style="display:none;"></p>
+<h2 id="loveText" style="display:none;">I LOVE YOU 💜</h2>
+<h3 id="nameReveal" style="display:none;">Bebu Jaan 💖</h3>
+
+</div>
+
+<script>
+let slideIndex = 0;
+
+// Slideshow function
+function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1; }
+    slides[slideIndex - 1].style.display = "block";
+    setTimeout(showSlides, 2000);
+}
+
+
+// Typing message
+var text = "Labuuuu So Much My Girl😘 Hamesha Khush Raho , Aapki saree wish poori ho , or hamesha ham sang sang ladte rahein😁";
+var i = 0;
+
+function typeEffect() {
+    if (i < text.length) {
+        document.getElementById("hiddenMessage").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, 50);
+    }
+}   
+
+// Main function
+function startSurprise() {
+
+    // Show slideshow below button
+    document.getElementById("slider").style.display = "block";
+    showSlides();
+
+    // Play music
+    document.getElementById("music").play();
+
+    // Show message
+    document.getElementById("hiddenMessage").style.display = "block";
+    typeEffect();
+
+createFirework(window.innerWidth / 2, window.innerHeight / 2);
+// Show I LOVE YOU after typing
+setTimeout(() => {
+    document.getElementById("loveText").style.display = "block";
+}, 3000);
+
+// Show name after that
+setTimeout(() => {
+    document.getElementById("nameReveal").style.display = "block";
+}, 5000);
+}
+
+// Floating hearts
+setInterval(function() {
+    var heart = document.createElement("div");
+    heart.className = "heart";
+
+    let hearts = ["💜", "🤍"];
+    heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.bottom = "0";
+
+    document.querySelector(".container").appendChild(heart);
+
+    setTimeout(() => { heart.remove(); }, 5000);
+}, 300);
+
+setInterval(function() {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random() * 100 + "vw";
+
+    document.body.appendChild(s);
+
+    setTimeout(() => { s.remove(); }, 2000);
+}, 200);
+
+function createFirework(x, y) {
+    for (let i = 0; i < 30; i++) {
+        let f = document.createElement("div");
+        f.className = "firework";
+
+        let angle = Math.random() * 2 * Math.PI;
+        let distance = Math.random() * 100;
+
+        f.style.left = x + "px";
+        f.style.top = y + "px";
+
+        document.body.appendChild(f);
+
+        let dx = Math.cos(angle) * distance;
+        let dy = Math.sin(angle) * distance;
+
+        f.animate([
+            { transform: "translate(0,0)", opacity: 1 },
+            { transform: `translate(${dx}px, ${dy}px)`, opacity: 0 }
+        ], {
+            duration: 1000,
+            easing: "ease-out"
+        });
+
+        setTimeout(() => f.remove(), 1000);
+    }
+}
+
+</script>
+
+</body>
+</html>
